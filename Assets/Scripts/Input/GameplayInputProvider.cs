@@ -10,6 +10,7 @@ public class GameplayInputProvider : InputProvider
     public OnFloatDelegate OnMoveUD;
     public OnVoidDelegate OnJump;
     public OnVoidDelegate OnRun;
+    public OnVoidDelegate OnRunCancelled;
     #endregion
 
     [Header("Gameplay")]
@@ -35,6 +36,7 @@ public class GameplayInputProvider : InputProvider
         _MoveUD.action.performed += MovePerformedUD;
         _Jump.action.performed += JumpPerformed;
         _Run.action.performed += RunPerformed;
+        _Run.action.canceled += RunCancelled;
     }
 
     private void OnDisable()
@@ -69,5 +71,10 @@ public class GameplayInputProvider : InputProvider
     private void RunPerformed(InputAction.CallbackContext obj)
     {
         OnRun?.Invoke();
+    }
+
+    private void RunCancelled(InputAction.CallbackContext obj)
+    {
+        OnRunCancelled?.Invoke();
     }
 }

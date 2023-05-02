@@ -34,12 +34,12 @@
                 },
                 {
                     "name": "Run",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "cb42ee04-3e10-4b98-89f7-9f2f72561617",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
