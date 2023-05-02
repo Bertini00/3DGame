@@ -6,43 +6,68 @@ using UnityEngine.InputSystem;
 public class GameplayInputProvider : InputProvider
 {
     #region Delegate
-    public OnFloatDelegate OnMove;
+    public OnFloatDelegate OnMoveRL;
+    public OnFloatDelegate OnMoveUD;
     public OnVoidDelegate OnJump;
+    public OnVoidDelegate OnRun;
     #endregion
 
     [Header("Gameplay")]
     [SerializeField]
-    private InputActionReference _Move;
+    private InputActionReference _MoveRL;
+    [SerializeField]
+    private InputActionReference _MoveUD;
 
     [SerializeField]
     private InputActionReference _Jump;
 
+    [SerializeField]
+    private InputActionReference _Run;
+
     private void OnEnable()
     {
-        _Move.action.Enable();
+        _MoveRL.action.Enable();
+        _MoveUD.action.Enable();
         _Jump.action.Enable();
+        _Run.action.Enable();
 
-        _Move.action.performed += MovePerfomed;
-        _Jump.action.performed += JumpPerfomed;
+        _MoveRL.action.performed += MovePerformedRL;
+        _MoveUD.action.performed += MovePerformedUD;
+        _Jump.action.performed += JumpPerformed;
+        _Run.action.performed += RunPerformed;
     }
 
     private void OnDisable()
     {
-        _Move.action.Disable();
+        _MoveRL.action.Disable();
+        _MoveUD.action.Disable();
         _Jump.action.Disable();
+        _Run.action.Disable();
 
-        _Move.action.performed -= MovePerfomed;
-        _Jump.action.performed -= JumpPerfomed;
+        _MoveRL.action.performed -= MovePerformedRL;
+        _MoveUD.action.performed -= MovePerformedUD;
+        _Jump.action.performed -= JumpPerformed;
+        _Run.action.performed -= RunPerformed;
     }
 
-    private void MovePerfomed(InputAction.CallbackContext obj)
+    private void MovePerformedRL(InputAction.CallbackContext obj)
     {
         float value = obj.action.ReadValue<float>();
-        OnMove?.Invoke(value);
+        OnMoveRL?.Invoke(value);
+    }
+    private void MovePerformedUD(InputAction.CallbackContext obj)
+    {
+        float value = obj.action.ReadValue<float>();
+        OnMoveUD?.Invoke(value);
     }
 
-    private void JumpPerfomed(InputAction.CallbackContext obj)
+    private void JumpPerformed(InputAction.CallbackContext obj)
     {
         OnJump?.Invoke();
+    }
+
+    private void RunPerformed(InputAction.CallbackContext obj)
+    {
+        OnRun?.Invoke();
     }
 }

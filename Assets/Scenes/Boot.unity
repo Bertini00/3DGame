@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1080522922456813120, guid: abc29100bf14d834ab8b8d947f7e2d41, type: 3}
+      propertyPath: _Run
+      value: 
+      objectReference: {fileID: -1595374674078375592, guid: 6cfab8ada81cecb49b8a2e2313381617, type: 3}
+    - target: {fileID: 1080522922456813120, guid: abc29100bf14d834ab8b8d947f7e2d41, type: 3}
+      propertyPath: _MoveRL
+      value: 
+      objectReference: {fileID: -6269801820462639491, guid: 6cfab8ada81cecb49b8a2e2313381617, type: 3}
+    - target: {fileID: 1080522922456813120, guid: abc29100bf14d834ab8b8d947f7e2d41, type: 3}
+      propertyPath: _MoveUD
+      value: 
+      objectReference: {fileID: 7984769727889452335, guid: 6cfab8ada81cecb49b8a2e2313381617, type: 3}
     - target: {fileID: 1080522924486531306, guid: abc29100bf14d834ab8b8d947f7e2d41, type: 3}
       propertyPath: m_Name
       value: PlayerController
