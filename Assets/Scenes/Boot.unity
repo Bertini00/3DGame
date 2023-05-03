@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: _MoveUD
       value: 
       objectReference: {fileID: 7984769727889452335, guid: 6cfab8ada81cecb49b8a2e2313381617, type: 3}
+    - target: {fileID: 1080522922456813120, guid: abc29100bf14d834ab8b8d947f7e2d41, type: 3}
+      propertyPath: _Ability
+      value: 
+      objectReference: {fileID: 3249433109986459697, guid: 6cfab8ada81cecb49b8a2e2313381617, type: 3}
     - target: {fileID: 1080522924486531306, guid: abc29100bf14d834ab8b8d947f7e2d41, type: 3}
       propertyPath: m_Name
       value: PlayerController

@@ -11,6 +11,7 @@ public class GameplayInputProvider : InputProvider
     public OnVoidDelegate OnJump;
     public OnVoidDelegate OnRun;
     public OnVoidDelegate OnRunCancelled;
+    public OnVoidDelegate OnAbility;
     #endregion
 
     [Header("Gameplay")]
@@ -25,18 +26,23 @@ public class GameplayInputProvider : InputProvider
     [SerializeField]
     private InputActionReference _Run;
 
+    [SerializeField]
+    private InputActionReference _Ability;
     private void OnEnable()
     {
         _MoveRL.action.Enable();
         _MoveUD.action.Enable();
         _Jump.action.Enable();
         _Run.action.Enable();
+        _Ability.action.Enable();
 
         _MoveRL.action.performed += MovePerformedRL;
         _MoveUD.action.performed += MovePerformedUD;
         _Jump.action.performed += JumpPerformed;
         _Run.action.performed += RunPerformed;
         _Run.action.canceled += RunCancelled;
+
+        _Ability.action.performed += AbilityPerformed;
     }
 
     private void OnDisable()
@@ -45,11 +51,15 @@ public class GameplayInputProvider : InputProvider
         _MoveUD.action.Disable();
         _Jump.action.Disable();
         _Run.action.Disable();
+        _Ability.action.Disable();
 
         _MoveRL.action.performed -= MovePerformedRL;
         _MoveUD.action.performed -= MovePerformedUD;
         _Jump.action.performed -= JumpPerformed;
         _Run.action.performed -= RunPerformed;
+        _Run.action.canceled -= RunCancelled;
+
+        _Ability.action.performed -= AbilityPerformed;
     }
 
     private void MovePerformedRL(InputAction.CallbackContext obj)
@@ -76,5 +86,10 @@ public class GameplayInputProvider : InputProvider
     private void RunCancelled(InputAction.CallbackContext obj)
     {
         OnRunCancelled?.Invoke();
+    }
+
+    private void AbilityPerformed(InputAction.CallbackContext obj)
+    {
+        OnAbility?.Invoke();
     }
 }
