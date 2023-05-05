@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,7 +54,7 @@ public class CharacterControllerScript : MonoBehaviour
 
         _currentMovement = Vector3.zero;
         _currentJumping = Vector3.zero;
-        
+
 
         animator = GetComponent<Animator>();
 
@@ -88,10 +89,10 @@ public class CharacterControllerScript : MonoBehaviour
         if (!_characterController.isGrounded)
         {
             _currentJumping.y -= GRAVITY * Time.deltaTime;
-            
+
         }
 
-        _characterController.Move(_currentMovement * Time.deltaTime * (_isRunning ? 2:1));
+        _characterController.Move(_currentMovement * Time.deltaTime * (_isRunning ? 2 : 1));
 
         _characterController.Move(_currentJumping * Time.deltaTime);
 
@@ -110,6 +111,8 @@ public class CharacterControllerScript : MonoBehaviour
             animator.SetBool("IsWalking", false);
             animator.SetBool("IsRunning", false);
         }
+
+
     }
 
     private void HandleRotation()
@@ -136,7 +139,8 @@ public class CharacterControllerScript : MonoBehaviour
         {
             _currentJumping.y = 5f;
 
-            Debug.Log("JUMP");
+            animator.SetBool("IsJumping", true);
+            StartCoroutine(JumpAnimationReset());
         }
 
     }
@@ -188,6 +192,12 @@ public class CharacterControllerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(ABILITY_COOLDOWN);
         _canUseAbility = true;
+    }
+
+    private IEnumerator JumpAnimationReset()
+    {
+        yield return new WaitForSeconds(0.867f);
+        animator.SetBool("IsJumping", false);
     }
 
     private void SpawnObject()
