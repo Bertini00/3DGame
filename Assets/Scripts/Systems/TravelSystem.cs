@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TravelSystem : Singleton<TravelSystem>
+public class TravelSystem : Singleton<TravelSystem>, ISystem
 {
 
     public delegate void OnTravelCompleteDelegate();
@@ -13,19 +13,18 @@ public class TravelSystem : Singleton<TravelSystem>
     private string _InitialScene;
     [SerializeField]
     private string _LoadingScene;
+    [SerializeField]
+    private int _Priority;
 
     private string _currentScene;
     private string _targetScene;
 
-    private void Start()
-    {
-        _currentScene = SceneManager.GetActiveScene().name;
-        LoadScene(_InitialScene);
-    }
+    public int Priority { get => _Priority; }
+
 
     public void LoadScene(string path)
     {
-        StartCoroutine(Load(path)); 
+        StartCoroutine(Load(path));
     }
 
     private IEnumerator Load(string path)
@@ -35,9 +34,9 @@ public class TravelSystem : Singleton<TravelSystem>
         AsyncOperation op_loading = SceneManager.LoadSceneAsync(_LoadingScene, LoadSceneMode.Additive);
         yield return new WaitUntil(() => { return op_loading.isDone; });
 
-         AsyncOperation op_current = SceneManager.UnloadSceneAsync(_currentScene);
+        AsyncOperation op_current = SceneManager.UnloadSceneAsync(_currentScene);
         yield return new WaitUntil(() => { return op_current.isDone; });
-        
+
         AsyncOperation op_target = SceneManager.LoadSceneAsync(_targetScene, LoadSceneMode.Additive);
         yield return new WaitUntil(() => { return op_target.isDone; });
 
@@ -49,5 +48,11 @@ public class TravelSystem : Singleton<TravelSystem>
         yield return new WaitUntil(() => { return op_current.isDone; });
 
         TravelComplete?.Invoke();
+    }
+
+    public void Setup()
+    {
+        _currentScene = SceneManager.GetActiveScene().name;
+        SystemCoordinator.Instance.FinishSystemSetup(this);
     }
 }

@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : Singleton<PlayerController>, ISystem
 {
+    [SerializeField]
+    private int _Priority;
+    public int Priority { get => _Priority; }
+
+
     [SerializeField]
     private List<InputProvider> _ProviderList;
 
     private Dictionary<string, InputProvider> _providerDictionary;
 
-    protected override void OnAwake()
-    {
-        _providerDictionary = new Dictionary<string, InputProvider>();
 
-        foreach (InputProvider provider in _ProviderList)
-        {
-            _providerDictionary.Add(provider.Id.Id, provider);
-        }
-    }
 
     public T GetInput<T>(string id) where T : InputProvider
     {
@@ -26,7 +23,7 @@ public class PlayerController : Singleton<PlayerController>
             return null;
         }
 
-        return  _providerDictionary[id] as T;
+        return _providerDictionary[id] as T;
     }
 
     public void EnableInputProvider(string id)
@@ -46,5 +43,17 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         _providerDictionary[id].gameObject.SetActive(false);
+    }
+
+    public void Setup()
+    {
+        _providerDictionary = new Dictionary<string, InputProvider>();
+
+        foreach (InputProvider provider in _ProviderList)
+        {
+            _providerDictionary.Add(provider.Id.Id, provider);
+        }
+
+        SystemCoordinator.Instance.FinishSystemSetup(this);
     }
 }
