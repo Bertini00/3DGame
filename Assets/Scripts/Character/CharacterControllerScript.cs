@@ -8,8 +8,8 @@ using UnityEngine.InputSystem;
 public class CharacterControllerScript : MonoBehaviour
 {
     [Header("Constant")]
-    [SerializeField]
-    private float MOVEMENT_VALUE = 0.01f;
+    //[SerializeField]
+    //private float MOVEMENT_VALUE = 0.01f;
     [SerializeField]
     private float ROTATIONFACTOR = 10f;
     [SerializeField]
