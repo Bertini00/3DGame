@@ -16,3 +16,10 @@ MonoBehaviour:
   - SceneName: MainMenu
     PoolManagerList:
     - {fileID: 2549012015490464834, guid: 97c7514b8fd0a5849933e875c9df1d20, type: 3}
+    - {fileID: 5577251359451544044, guid: c885a076958d7ba4398762c37d3c3911, type: 3}
+  - SceneName: Playground
+    PoolManagerList:
+    - {fileID: 2549012015490464834, guid: 97c7514b8fd0a5849933e875c9df1d20, type: 3}
+  - SceneName: Playground2
+    PoolManagerList:
+    - {fileID: 5577251359451544044, guid: c885a076958d7ba4398762c37d3c3911, type: 3}

@@ -20,8 +20,11 @@ public class PlayerController : Singleton<PlayerController>, ISystem
     {
         if (!_providerDictionary.ContainsKey(id))
         {
+            //Debug.Log("Key not contained: " +  id);
             return null;
         }
+
+        Debug.Log("Found input controller: " + id + " - " + _providerDictionary[id]);
 
         return _providerDictionary[id] as T;
     }

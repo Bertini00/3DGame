@@ -8,6 +8,10 @@ public class FlowSystem : Singleton<FlowSystem>, ISystem
 
     [SerializeField]
     private int _Priority;
+
+    [SerializeField]
+    private string _OnStartGameplayEventName;
+
     public int Priority { get => _Priority; }
 
 
@@ -16,6 +20,7 @@ public class FlowSystem : Singleton<FlowSystem>, ISystem
 
     public void Setup()
     {
+        TravelSystem.Instance.TravelComplete += OnTravelComplete;
         SystemCoordinator.Instance.FinishSystemSetup(this);
     }
 
@@ -32,6 +37,14 @@ public class FlowSystem : Singleton<FlowSystem>, ISystem
     public T GetFSMVariable<T>(string variableName)
     {
         return Variables.Application.Get<T>(variableName);
+    }
+
+    private void OnTravelComplete()
+    {
+        if (GetFSMVariable<string>("SCENE_TO_LOAD") != "MainMenu")
+        {
+            TriggerFSMEvent(_OnStartGameplayEventName);
+        }
     }
 
 }

@@ -50,6 +50,7 @@ public class CharacterControllerScript : MonoBehaviour
     private void Awake()
     {
         _gameplayInputProvider = PlayerController.Instance.GetInput<GameplayInputProvider>(_IdProvider.Id);
+        Debug.Log("Character input provider: " +  _gameplayInputProvider);
         _characterController = GetComponent<CharacterController>();
 
         _currentMovement = Vector3.zero;

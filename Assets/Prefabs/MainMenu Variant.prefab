@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _OptionsViewPrefab: {fileID: 3668297952304372311, guid: b3c6d421da356eb4f8ba7a2c8b185a22, type: 3}
+  _OnChangeSceneEventName: ON_GAMEPLAY_START
 --- !u!1001 &1592412494869524532
 PrefabInstance:
   m_ObjectHideFlags: 0

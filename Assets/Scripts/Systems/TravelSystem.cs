@@ -47,6 +47,8 @@ public class TravelSystem : Singleton<TravelSystem>, ISystem
         op_loading = SceneManager.UnloadSceneAsync(_LoadingScene);
         yield return new WaitUntil(() => { return op_current.isDone; });
 
+        FlowSystem.Instance.SetFSMVariable("SCENE_TO_LOAD", _currentScene);
+
         TravelComplete?.Invoke();
     }
 
