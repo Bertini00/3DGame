@@ -280,6 +280,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1671397987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671397991}
+  - component: {fileID: 1671397990}
+  - component: {fileID: 1671397989}
+  - component: {fileID: 1671397988}
+  m_Layer: 0
+  m_Name: GameEventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1671397988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671397987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f51b78f954f1564d8b8e746a782d972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DebugEvent: {fileID: 11400000, guid: e9de0fb60fda41d4a9a53e267e12ff64, type: 2}
+--- !u!114 &1671397989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671397987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfc59adfd3ccb1479d630f86f81f01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DebugEvent: {fileID: 11400000, guid: e9de0fb60fda41d4a9a53e267e12ff64, type: 2}
+  _DebugIdContainer: {fileID: 11400000, guid: f024130718c891140bfcc71668409a1a, type: 2}
+--- !u!114 &1671397990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671397987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fbca7f1ea727145b35aa52c79710af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1671397991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671397987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 945.91113, y: 574.47156, z: -5.6896405}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793920229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7806853629962513692, guid: dab1781524ae3a544b19208f9339e415, type: 3}
